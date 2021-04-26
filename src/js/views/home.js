@@ -1,6 +1,5 @@
 import React from "react";
 import "../../styles/home.scss";
-
 import { Characters } from "../component/Characters";
 
 import { Context } from "../store/appContext";
@@ -17,11 +16,9 @@ export const Home = () => {
 	//alert(long);
 
 	return (
-		<div>
-			<div className="row mx-2">
-				<div className="">
-					<Characters people={store.people} />
-				</div>
+		<div className="container">
+			<div className="row justify-content-start">
+				<Characters people={store.people} />
 			</div>
 		</div>
 	);

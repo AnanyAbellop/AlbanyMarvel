@@ -7,19 +7,13 @@ import { useContext } from "react";
 
 export const Home = () => {
 	const { store, actions } = useContext(Context);
-	let long = store.people.length;
-	let rows = 0;
-	rows = long / 4;
-	if (long % 4 != 0) {
-		rows++;
-	}
-	//alert(long);
-
+	console.log("store.rows", store.rows);
 	return (
 		<div className="container">
-			<div className="row justify-content-start">
+			<Characters rows={store.rows} />
+			{/* <div className="row justify-content-start my-2">
 				<Characters people={store.people} />
-			</div>
+			</div> */}
 		</div>
 	);
 };

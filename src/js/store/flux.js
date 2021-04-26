@@ -17,7 +17,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					initial: "white"
 				}
 			],
-			rows: {},
+			rows: [],
 			people: [
 				{
 					id: 1011334,
@@ -2109,11 +2109,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 				getActions().changeColor(0, "green");
 			},
 			getRows: () => {
-				//alert("entre en get rows");
 				var store = getStore();
 				var supers = store.people;
 				var long = supers.length;
-				//console.log(supers);
 				var filas = [];
 				var cont = 0;
 				var long2 = Math.floor(long / 4);
@@ -2125,6 +2123,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 					for (var j = 0; j < 4; j++) {
 						filas[i][j] = supers[cont];
 						cont++;
+						if (cont === long) {
+							break;
+						}
 					}
 				}
 				console.log(filas);

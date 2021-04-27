@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useState, useContext } from "react";
 import marvelImage from "../../img/Marvel-Logotipo.jpg";
 import { Link } from "react-router-dom";
-
+import { Context } from "../store/appContext";
 export const Navbar = () => {
+	const [superHero, setSuperHero] = useState("");
+	const { store, actions } = useContext(Context);
 	return (
-		<nav className="navbar navbar-light bg-light mb-3">
+		<nav className="navbar navbar-light bg-white mb-3">
 			<Link to="/">
 				<a className="navbar-brand" href="#">
 					<img src={marvelImage} width="60" height="50" alt="" />
@@ -12,10 +14,26 @@ export const Navbar = () => {
 			</Link>
 			<div className="ml-auto">
 				<form className="form-inline">
-					<button className="btn my-2 my-sm-0" type="submit">
-						<i className="fa fa-search" aria-hidden="true" />
-					</button>
-					<input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" />
+					<input
+						className="form-control mr-sm-2"
+						type="text"
+						name="SuperHero"
+						onChange={event => {
+							setSuperHero(event.target.value);
+							actions.getHero(superHero);
+							if (event.target.value === "") {
+								actions.getSuperHeroes();
+							}
+						}}
+						value={superHero}
+						placeholder="Buscar"
+					/>
+					<span
+						href="#"
+						className="btn p-2 btn-outline-warning"
+						style={{ color: "#DFDDDD", border: "#A2A1A1" }}>
+						<i className="icono far fa-star" />
+					</span>
 				</form>
 			</div>
 		</nav>

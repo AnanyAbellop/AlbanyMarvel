@@ -10,10 +10,11 @@ export const Home = () => {
 	console.log("store.rows", store.rows);
 	return (
 		<div className="container">
-			<Characters rows={store.rows} />
-			{/* <div className="row justify-content-start my-2">
-				<Characters people={store.people} />
-			</div> */}
+			{/*<Characters rows={store.rows} />*/}
+
+			<div className="row justify-content-start">
+				<Characters people={store.people} rows={store.rows} />
+			</div>
 		</div>
 	);
 };
